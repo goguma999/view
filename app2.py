@@ -44,7 +44,19 @@ rc('font', family=font)
 
 money = pd.read_csv("c:\\data\\money_data7.csv")
 
-money = money[:] [money['A_YEAR']==2022]
+
+# 년도 선택 박스 넣기
+import streamlit as st
+
+option = st.selectbox(
+    'How would you like to choice year ?',
+    ('2020', '2021', '2022'))
+
+option2 = int(option)
+
+st.write('You selected:', option)
+
+money = money[:] [money['A_YEAR']== option2]
 
 fig, ax = plt.subplots(2,2, figsize=(12,8))
 
